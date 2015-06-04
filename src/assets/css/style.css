@@ -1,0 +1,91 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+}
+body header {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  height: 100px;
+}
+body header img {
+  height: 100%;
+  width: auto;
+}
+body menu {
+  width: 100%;
+  max-width: 900px;
+  margin: -60px auto 0;
+  text-align: right;
+}
+body menu li {
+  display: inline;
+}
+body menu li a {
+  display: inline-block;
+  padding: 10px;
+  text-decoration: none;
+  color: #444;
+  transition: all .3s;
+  border-bottom: solid 3px #fff;
+}
+body menu li a:hover {
+  color: #000;
+  border-bottom-color: #444444;
+}
+body #container {
+  clear: both;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+body #container h1 {
+  text-align: center;
+  border-bottom: solid 2px #f3f3f3;
+  margin-bottom: 15px;
+}
+body #container table {
+  width: 100%;
+}
+body #container table .empty {
+  padding: 10px;
+  font-style: italic;
+  color: #555;
+  text-align: center;
+}
+body #container .last_results {
+  margin-top: 40px;
+}
+body #container .last_results h2 {
+  text-align: center;
+  border-bottom: solid 2px #efefef;
+  margin-bottom: 10px;
+}
+body #container .last_results table span {
+  display: block;
+}
+body #container form {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+body #container form input[type="text"] {
+  margin: 5px 0;
+  padding: 10px;
+  width: calc(80%);
+}
+body #container form select {
+  margin: 5px 0;
+  padding: 10px;
+  width: calc(85%);
+}
+body #container form input[type="submit"] {
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+body #container form .team1 {
+  margin: 10px 0;
+}

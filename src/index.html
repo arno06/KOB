@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>KOB</title>
+        <link href="assets/css/style.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Lato:400,900' rel='stylesheet' type='text/css'>
+        <script src="../../Dependencies/src/?need=Template,Request"></script>
+        <script type="application/json" id="routing_rules">
+{
+    "home":
+    {
+        "hash":"home",
+        "controller":"Index",
+        "action":"defaultAction",
+        "default":true
+    },
+    "add_player":
+    {
+        "hash":"player/add",
+        "controller":"Index",
+        "action":"addPlayer"
+    },
+    "add_results":
+    {
+        "hash":"results/add",
+        "controller":"Index",
+        "action":"addResults"
+    },
+    "delete_player":
+    {
+        "hash":"player/delete/{$id}",
+        "controller":"Index",
+        "action":"deletePlayer",
+        "parameters":{
+            "id":"[0-9]+"
+        }
+    },
+    "delete_results":
+    {
+        "hash":"results/delete/{$id}",
+        "controller":"Index",
+        "action":"deleteResult",
+        "parameters":{
+            "id":"[0-9]+"
+        }
+    }
+}
+        </script>
+        <script src="js/kob.js"></script>
+    </head>
+    <body>
+        <header>
+            <img src="assets/imgs/logo.jpg">
+        </header>
+        <menu>
+            <li><a href="#home">Classement</a></li>
+            <li><a href="#results/add">Ajouter un r&eacute;sultat</a></li>
+            <li><a href="#player/add">Ajouter un joueur</a></li>
+        </menu>
+        <div id="container"></div>
+        <div id="loader"></div>
+        <script type="html/template" id="Index_defaultAction_tpl">
+            <h1>Classement</h1>
+            <table>
+                <tr>
+                    <th>#</th>
+                    <th>Nom</th>
+                    <th>Points/matchs</th>
+                    <th>Matchs</th>
+                    <th>Gagn&eacute;s</th>
+                    <th>Perdus</th>
+                    <th>P.P</th>
+                    <th>P.C</th>
+                    <th>Diff</th>
+                    <th></th>
+                </tr>
+{foreach $content.players $player}
+                <tr>
+                    <td>{$player.position}</td>
+                    <td>{$player.name}</td>
+                    <td>{$player.avgPts}</td>
+                    <td>{$player.played}</td>
+                    <td>{$player.win}</td>
+                    <td>{$player.lose}</td>
+                    <td>{$player.pp}</td>
+                    <td>{$player.pc}</td>
+                    <td>{$player.diff}</td>
+                    <td><a href="#player/delete/{$player.id}">Supprimer</a></td>
+                </tr>
+                {else}
+                <tr>
+                    <td colspan="10" class="empty">Il n'y a pas encore de joueurs</td>
+                </tr>
+{/foreach}
+            </table>
+
+            <div class="last_results">
+                <h2>Derniers matchs</h2>
+                <table>
+                    <tr>
+                        <th colspan="2">Equipe 1</th>
+                        <th colspan="2">Equipe 2</th>
+                        <th></th>
+                    </tr>
+                    {foreach $content.results $match $key}
+                    <tr>
+                        <td>
+                            {foreach $match.team1 $p}
+                                <span>{$p.name}</span>
+                            {/foreach}
+                        </td>
+                        <td>{$match.score1}</td>
+                        <td>{$match.score2}</td>
+                        <td>
+                            {foreach $match.team2 $p}
+                            <span>{$p.name}</span>
+                            {/foreach}
+                        </td>
+                        <td><a href="#results/delete/{$key}">Supprimer</a></td>
+                    </tr>
+                    {else}
+                    <tr>
+                        <td colspan="5" class="empty">Il n'y a pas de match enregistr&eacute;.</td>
+                    </tr>
+                    {/foreach}
+                </table>
+            </div>
+        </script>
+        <script type="html/template" id="Index_addPlayer_tpl">
+            <h1>Ajouter un joueur</h1>
+            <form>
+                <div><input type="text" id="name_player" placeholder="Nom du joueur"></div>
+                <div><input type="submit" value="Ajouter"></div>
+            </form>
+        </script>
+        <script type="html/template" id="Index_addResults_tpl">
+            <h1>Ajouter un r&eacute;sultat</h1>
+            <form>
+                <div class="team1">
+                    <h2>Equipe 1</h2>
+                    <p><select id="p1">
+                        {foreach $content.players $player $k}
+                        <option value="{$k}">{$player.name}</option>
+                        {/foreach}
+                    </select></p>
+                    <p><select id="p2">
+                        {foreach $content.players $player $k}
+                        <option value="{$k}">{$player.name}</option>
+                        {/foreach}
+                    </select></p>
+                    <p><input type="text" id="score1" placeholder="Score 1"></p>
+                </div>
+                <div class="team2">
+                    <h2>Equipe 2</h2>
+                    <p><select id="p3">
+                        {foreach $content.players $player $k}
+                        <option value="{$k}">{$player.name}</option>
+                        {/foreach}
+                    </select></p>
+                    <p><select id="p4">
+                        {foreach $content.players $player $k}
+                        <option value="{$k}">{$player.name}</option>
+                        {/foreach}
+                    </select></p>
+                    <p><input type="text" id="score2" placeholder="Score 2"></p>
+                </div>
+                <div><input type="submit" value="Enregistrer"></div>
+            </form>
+        </script>
+    </body>
+</html>
