@@ -59,6 +59,9 @@
         </menu>
         <div id="container"></div>
         <div id="loader"></div>
+        <footer>
+            <img src="assets/imgs/alex.jpg">
+        </footer>
         <script type="html/template" id="Index_defaultAction_tpl">
             <h1>Classement</h1>
             <table>
@@ -76,7 +79,7 @@
                     <th></th>
                 </tr>
 {foreach $content.players $player}
-                <tr>
+                <tr class="p{$player.position}">
                     <td>{$player.position}</td>
                     <td class="name">{$player.name}</td>
                     <td>{$player.avgPts}</td>
@@ -106,14 +109,14 @@
                     </tr>
                     {foreach $content.results $match $key}
                     <tr>
-                        <td>
+                        <td{if $match.score1>$match.score2} class="winner"{/if}>
                             {foreach $match.team1 $p}
                                 <span>{$p.name}</span>
                             {/foreach}
                         </td>
-                        <td>{$match.score1}</td>
-                        <td>{$match.score2}</td>
-                        <td>
+                        <td{if $match.score1>$match.score2} class="winner"{/if}>{$match.score1}</td>
+                        <td{if $match.score2>$match.score1} class="winner"{/if}>{$match.score2}</td>
+                        <td{if $match.score2>$match.score1} class="winner"{/if}>
                             {foreach $match.team2 $p}
                             <span>{$p.name}</span>
                             {/foreach}

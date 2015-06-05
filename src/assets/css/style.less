@@ -11,6 +11,15 @@ body{
             width:auto;
         }
     }
+    footer{
+        padding:10px;
+        text-align: center;
+        height:50px;
+        img{
+            height:100%;
+            width:auto;
+        }
+    }
     menu{
         width:100%;
         max-width:900px;
@@ -43,12 +52,35 @@ body{
             margin-bottom:15px;
         }
         table{
+            border-collapse: collapse;
             width:100%;
-
+            tr{
+                &.p1{
+                    td{
+                        background: #fdffd8;
+                    }
+                }
+                &.p2{
+                    td{
+                        background: #f0f0f0;
+                    }
+                }
+                &.p3{
+                    td{
+                        background: #FDDBB9;
+                    }
+                }
+            }
+            th{
+                padding:10px 0;
+            }
             td{
-                padding:5px 0;
+                padding:10px 0;
                 text-align: center;
-                border-bottom:solid 1px #eee;
+                border-bottom:solid 3px #eee;
+                &.winner{
+                    background:#EEFFF2;
+                }
                 &.name{
                     text-align: left;
                 }

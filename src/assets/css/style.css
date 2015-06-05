@@ -13,6 +13,15 @@ body header img {
   height: 100%;
   width: auto;
 }
+body footer {
+  padding: 10px;
+  text-align: center;
+  height: 50px;
+}
+body footer img {
+  height: 100%;
+  width: auto;
+}
 body menu {
   width: 100%;
   max-width: 900px;
@@ -46,12 +55,28 @@ body #container h1 {
   margin-bottom: 15px;
 }
 body #container table {
+  border-collapse: collapse;
   width: 100%;
 }
+body #container table tr.p1 td {
+  background: #fdffd8;
+}
+body #container table tr.p2 td {
+  background: #f0f0f0;
+}
+body #container table tr.p3 td {
+  background: #FDDBB9;
+}
+body #container table th {
+  padding: 10px 0;
+}
 body #container table td {
-  padding: 5px 0;
+  padding: 10px 0;
   text-align: center;
-  border-bottom: solid 1px #eee;
+  border-bottom: solid 3px #eee;
+}
+body #container table td.winner {
+  background: #EEFFF2;
 }
 body #container table td.name {
   text-align: left;
