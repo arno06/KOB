@@ -161,14 +161,9 @@ switch($_POST['action'])
 
         $results = array_reverse($results);
 
-        $max = 5;
-        $current = 0;
-
         $return = array();
         foreach($results as &$r)
         {
-            if($current>=$max)
-                continue;
             for($i = 1; $i<=2; $i++)
             {
                 foreach($r['team'.$i] as $n=>$id)
@@ -180,11 +175,10 @@ switch($_POST['action'])
                 }
             }
             $return[] = $r;
-            $current++;
         }
 
         header('Content-Type:application/json');
-        echo json_encode($results);
+        echo json_encode($return);
         exit();
 
         break;

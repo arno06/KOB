@@ -145,18 +145,23 @@
                         players[i].avgPts = Math.round((players[i].pts/players[i].played)*10)/10;
                         if(isNaN(players[i].avgPts))
                             players[i].avgPts = 0;
+                        players[i].avgWin = Math.round((players[i].win/players[i].played)*100);
                     }
 
-                    players.sort(function(pA, pB){
-                        if(pA.avgPts>pB.avgPts)
-                            return -1;
-                        else if(pA.avgPts<pB.avgPts)
-                            return 1;
+                    var classement = ['pp', 'diff'];
 
-                        if(pA.diff>pB.diff)
-                            return -1;
-                        else if(pA.diff<pB.diff)
-                            return 1;
+                    players.sort(function(pA, pB){
+
+                        for(var i in classement)
+                        {
+                            if(!classement.hasOwnProperty(i))
+                                continue;
+                            var prop = classement[i];
+                            if (pA[prop]>pB[prop])
+                                return -1;
+                            else if (pA[prop]<pB[prop])
+                                return 1;
+                        }
                         return 0;
                     });
 

@@ -65,19 +65,20 @@
                 <tr>
                     <th>#</th>
                     <th>Nom</th>
-                    <th>Points/matchs</th>
+                    <th>Points/match</th>
                     <th>Matchs</th>
                     <th>Gagn&eacute;s</th>
                     <th>Perdus</th>
                     <th>P.P</th>
                     <th>P.C</th>
                     <th>Diff</th>
+                    <th>% Victoires</th>
                     <th></th>
                 </tr>
 {foreach $content.players $player}
                 <tr>
                     <td>{$player.position}</td>
-                    <td>{$player.name}</td>
+                    <td class="name">{$player.name}</td>
                     <td>{$player.avgPts}</td>
                     <td>{$player.played}</td>
                     <td>{$player.win}</td>
@@ -85,7 +86,8 @@
                     <td>{$player.pp}</td>
                     <td>{$player.pc}</td>
                     <td>{$player.diff}</td>
-                    <td><a href="#player/delete/{$player.id}">Supprimer</a></td>
+                    <td>{$player.avgWin}%</td>
+                    <td class="delete"><a href="#player/delete/{$player.id}">Supprimer</a></td>
                 </tr>
                 {else}
                 <tr>
@@ -116,7 +118,7 @@
                             <span>{$p.name}</span>
                             {/foreach}
                         </td>
-                        <td><a href="#results/delete/{$key}">Supprimer</a></td>
+                        <td class="delete"><a href="#results/delete/{$key}">Supprimer</a></td>
                     </tr>
                     {else}
                     <tr>

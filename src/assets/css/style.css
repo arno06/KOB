@@ -48,6 +48,17 @@ body #container h1 {
 body #container table {
   width: 100%;
 }
+body #container table td {
+  padding: 5px 0;
+  text-align: center;
+  border-bottom: solid 1px #eee;
+}
+body #container table td.name {
+  text-align: left;
+}
+body #container table td.delete {
+  width: 90px;
+}
 body #container table .empty {
   padding: 10px;
   font-style: italic;
